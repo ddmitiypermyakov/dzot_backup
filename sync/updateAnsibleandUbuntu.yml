@@ -1,0 +1,18 @@
+---
+- name: Update Ubuntu and Install Ansible
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to the latest version
+      apt:
+        upgrade: dist
+
+    - name: Install Ansible
+      apt:
+        name: ansible
+        state: present

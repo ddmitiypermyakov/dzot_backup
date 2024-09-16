@@ -1,0 +1,17 @@
+---
+- name: Install Borg Backup
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Ensure Borg is installed
+      apt:
+        name: borgbackup
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Ensure Borg is installed
+      yum:
+        name: borgbackup
+        state: present
+      when: ansible_os_family == "RedHat"
